@@ -10,7 +10,7 @@ module Functions
       # Returns the closest record
       def closest_to(p, opts = {})
         srid = opts.delete(:srid) || 4326
-        opts.merge!(:order => "ST_Distance(#{default_geometry}, GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))")
+        opts.merge!(:order => "ST_Distance(#{default_geometry}, ST_GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))")
         find(:first, opts)
       end
 
@@ -18,7 +18,7 @@ module Functions
       # Order by distance
       def close_to(p, opts = {})
         srid = opts.delete(:srid) || 4326
-        opts.merge!(:order => "ST_Distance(geom, GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))")
+        opts.merge!(:order => "ST_Distance(geom, ST_GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))")
         find(:all, opts)
       end
 
@@ -33,11 +33,11 @@ module Functions
       end
 
       def contains(p, srid=4326)
-        find(:all, :conditions => ["ST_Contains(#{postgis_geoms.to_s}, GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))"])
+        find(:all, :conditions => ["ST_Contains(#{postgis_geoms.to_s}, ST_GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))"])
       end
 
       def contain(p, srid=4326)
-        find(:first, :conditions => ["ST_Contains(geom, GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))"])
+        find(:first, :conditions => ["ST_Contains(geom, ST_GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))"])
       end
 
       def by_area sort='asc'
