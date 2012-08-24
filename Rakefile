@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'rake'
 require 'rake/clean'
-require 'rake/rdoctask'
+require 'rdoc/task'
 #require 'spec/rake/spectask'
 
 CLEAN.include('**/*.gem')

@@ -20,3 +20,5 @@ group :development do
   gem "rcov", ">= 0"
   gem "autotest"
 end
+
+gemspec
