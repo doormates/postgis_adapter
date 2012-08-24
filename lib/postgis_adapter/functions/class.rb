@@ -37,7 +37,7 @@ module Functions
       end
 
       def contain(p, srid=4326)
-        find(:first, :conditions => ["ST_Contains(geom, ST_GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))"])
+        find(:first, :conditions => ["ST_Contains(#{postgis_geoms.to_s}, ST_GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))"])
       end
 
       def by_area sort='asc'
