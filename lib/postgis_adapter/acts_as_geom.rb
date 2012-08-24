@@ -17,7 +17,7 @@ module Functions
     # has_geom :data => :point
     # has_geom :geom => :line_string
     # has_geom :geom => :polygon
-    #
+    #`
     def has_geom(*geom)
       cattr_accessor :postgis_geoms
       self.postgis_geoms = geom[0].keys.first # {:columns => column }
@@ -32,7 +32,7 @@ module Functions
     alias :acts_as_geom :has_geom
 
     def get_geom_type(column)
-      self.postgis_geoms.values[0] rescue nil
+      postgis_geoms.respond_to?(:values) ? postgis_geoms.values[0] : postgis_geoms  rescue nil
     #   self.columns.select { |c| c.name == column.to_s }[0].geometry_type
     # rescue ActiveRecord::StatementInvalid => e
     #   nil
