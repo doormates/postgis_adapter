@@ -33,7 +33,7 @@ module Functions
       end
 
       def contains(p, srid=4326)
-        find(:all, :conditions => ["ST_Contains(#{self.postgis_geoms.to_s}, GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))"])
+        find(:all, :conditions => ["ST_Contains(#{postgis_geoms.to_s}, GeomFromText('POINT(#{p.x} #{p.y})', #{srid}))"])
       end
 
       def contain(p, srid=4326)
