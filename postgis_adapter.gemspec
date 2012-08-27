@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.test_files = Dir['spec/**/*.rb']
   spec.extra_rdoc_files  = ['README.rdoc']
   spec.add_dependency 'pg'
-
+  spec.add_dependency 'json_pure'
   spec.add_dependency 'nofxx-georuby'
 
   spec.description = 'Execute PostGIS functions on Active Record'
