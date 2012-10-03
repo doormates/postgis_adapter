@@ -111,6 +111,15 @@ module Functions
   end
 
   #
+  # 2D minimum cartesian distance between two geometries in miles.
+  #
+  # Returns Float ST_Distance(geometry g1, geometry g2) * 69;
+  #
+  def distance_to_in_miles(other)
+    distance_to(other) * 69
+  end
+
+  #
   # True if geometry A is completely inside geometry B.
   #
   # For this function to make sense, the source geometries must both be of the same
@@ -907,7 +916,7 @@ module Functions
   #
   module MultiPolygonFunctions
   end
-  
+
   #
   # Generic Geometry
   #
