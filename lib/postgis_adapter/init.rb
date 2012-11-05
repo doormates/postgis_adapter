@@ -10,7 +10,7 @@ include GeoRuby::SimpleFeatures
 include SpatialAdapter
 
 module PostgisAdapter
-  IGNORE_TABLES = %w{ spatial_ref_sys geometry_columns geography_columns raster_columns raster_overviews }
+  IGNORE_TABLES = %w{ spatial_ref_sys geometry_columns geography_columns raster_columns raster_overviews layer topology }
 end
 #tables to ignore in migration : relative to PostGIS management of geometric columns
 ActiveRecord::SchemaDumper.ignore_tables.concat PostgisAdapter::IGNORE_TABLES
